@@ -34,11 +34,7 @@ const Book = (props) => {
 const Cover = (props) => <img src={props.image} alt="Twilight" />;
 
 const Title = (props) => {
-  return (
-    <h3 /*style={{ color: "#f0F", fontSize: "0.75rem", margin: "0.25rem" }} */>
-      {props.title}
-    </h3>
-  );
+  return <h3>{props.title}</h3>;
 };
 
 const Author = () => <h1>{author.toUpperCase()}</h1>;
