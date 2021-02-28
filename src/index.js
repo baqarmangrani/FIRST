@@ -26,7 +26,13 @@ function BookList() {
         image={firstBook.image}
         title={firstBook.title}
         author={firstBook.author}
-      />
+      >
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci
+          deserunt, numquam pariatur provident maxime quod blanditiis eum nemo
+          neque incidunt.
+        </p>
+      </Book>
       <Book
         image={secondBook.image}
         title={secondBook.title}
@@ -36,12 +42,16 @@ function BookList() {
   );
 }
 
-const Book = ({ image, title, author }) => {
+const Book = (props) => {
+  const { image, title, author } = props;
+  console.log(props);
+
   return (
     <article className="book">
       <Cover image={image}></Cover>
       <Title title={title} />
       <Author author={author} />
+      {props.children}
     </article>
   );
 };
@@ -49,8 +59,6 @@ const Book = ({ image, title, author }) => {
 const Cover = (props) => <img src={props.image} alt="Twilight" />;
 
 const Title = (props) => {
-  console.log(props);
-
   return <h3>{props.title}</h3>;
 };
 
