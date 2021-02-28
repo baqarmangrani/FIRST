@@ -4,29 +4,44 @@ import ReactDOM from "react-dom";
 //CSS
 import "./index.css";
 
-const author = "Stephenie Meyer";
-const title = "Twilight";
-const imgSource =
-  "https://upload.wikimedia.org/wikipedia/en/1/1d/Twilightbook.jpg";
+//setup vars
+
+const firstBook = {
+  image: "https://upload.wikimedia.org/wikipedia/en/1/1d/Twilightbook.jpg",
+  author: "Stephenie Meyer",
+  title: "Twilight",
+};
+
+const secondBook = {
+  image:
+    "https://www.jkrowling.com/wp-content/uploads/2018/01/SorcerersStone_2017.png",
+  author: "J. K. Rowling",
+  title: "Harry Potter and the Philosopher's Stone",
+};
 
 function BookList() {
   return (
     <section className="booklist">
-      <Book job="AM" age={65} sex={"male"} />
-      <Book title={title} author={author} />
+      <Book
+        image={firstBook.image}
+        title={firstBook.title}
+        author={firstBook.author}
+      />
+      <Book
+        image={secondBook.image}
+        title={secondBook.title}
+        author={secondBook.author}
+      />
     </section>
   );
 }
 
-const Book = (props) => {
-  console.log(props);
+const Book = ({ image, title, author }) => {
   return (
     <article className="book">
-      <Cover image={imgSource}></Cover>
-      <Title title={props.title} />
-      <Author />
-      <p>{props.age}</p>
-      {/* {console.log(props)} */}
+      <Cover image={image}></Cover>
+      <Title title={title} />
+      <Author author={author} />
     </article>
   );
 };
@@ -34,9 +49,15 @@ const Book = (props) => {
 const Cover = (props) => <img src={props.image} alt="Twilight" />;
 
 const Title = (props) => {
+  console.log(props);
+
   return <h3>{props.title}</h3>;
 };
 
-const Author = () => <h1>{author.toUpperCase()}</h1>;
+const Author = (props) => {
+  const { author } = props;
+
+  return <h1>{author}</h1>;
+};
 
 ReactDOM.render(<BookList />, document.getElementById("root"));
