@@ -18,22 +18,27 @@ const books = [
     author: "J. K. Rowling",
     title: "Harry Potter and the Philosopher's Stone",
   },
+  {
+    image:
+      "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/8465/9781846573781.jpg",
+    author: "E. L. James",
+    title: "Fifty Shades Of Grey",
+  },
 ];
 
-const names = ["john", "peter", "susan"];
-const newNames = names.map((name) => {
-  // console.log(name);
-  return <h1>{name}</h1>;
-});
-
-console.log(newNames);
-
 function BookList() {
-  return <section className="booklist">{newNames}</section>;
+  return (
+    <section className="booklist">
+      {books.map((book) => {
+        const { image, title, author } = book;
+        return <Book book={book} />;
+      })}
+    </section>
+  );
 }
 
 const Book = (props) => {
-  const { image, title, author } = props;
+  const { image, title, author } = props.book;
   console.log(props);
 
   return (
