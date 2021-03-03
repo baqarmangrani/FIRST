@@ -4,42 +4,32 @@ import ReactDOM from "react-dom";
 //CSS
 import "./index.css";
 
-//setup vars
+//setup arr
 
-const firstBook = {
-  image: "https://upload.wikimedia.org/wikipedia/en/1/1d/Twilightbook.jpg",
-  author: "Stephenie Meyer",
-  title: "Twilight",
-};
+const books = [
+  {
+    image: "https://upload.wikimedia.org/wikipedia/en/1/1d/Twilightbook.jpg",
+    author: "Stephenie Meyer",
+    title: "Twilight",
+  },
+  {
+    image:
+      "https://www.jkrowling.com/wp-content/uploads/2018/01/SorcerersStone_2017.png",
+    author: "J. K. Rowling",
+    title: "Harry Potter and the Philosopher's Stone",
+  },
+];
 
-const secondBook = {
-  image:
-    "https://www.jkrowling.com/wp-content/uploads/2018/01/SorcerersStone_2017.png",
-  author: "J. K. Rowling",
-  title: "Harry Potter and the Philosopher's Stone",
-};
+const names = ["john", "peter", "susan"];
+const newNames = names.map((name) => {
+  // console.log(name);
+  return <h1>{name}</h1>;
+});
+
+console.log(newNames);
 
 function BookList() {
-  return (
-    <section className="booklist">
-      <Book
-        image={firstBook.image}
-        title={firstBook.title}
-        author={firstBook.author}
-      >
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci
-          deserunt, numquam pariatur provident maxime quod blanditiis eum nemo
-          neque incidunt.
-        </p>
-      </Book>
-      <Book
-        image={secondBook.image}
-        title={secondBook.title}
-        author={secondBook.author}
-      />
-    </section>
-  );
+  return <section className="booklist">{newNames}</section>;
 }
 
 const Book = (props) => {
@@ -51,7 +41,6 @@ const Book = (props) => {
       <Cover image={image}></Cover>
       <Title title={title} />
       <Author author={author} />
-      {props.children}
     </article>
   );
 };
