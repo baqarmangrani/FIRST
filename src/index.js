@@ -39,13 +39,39 @@ function BookList() {
   );
 }
 
-const Book = (props) => {
-  const { image, title, author } = props;
+const Book = ({ image, title, author }) => {
+  const clickHandler = (e) => {
+    console.log(e);
+    console.log(e.target);
+
+    alert("Hello World");
+  };
+
+  const LogAuthor = (author) => {
+    console.log(author);
+  };
+
   return (
-    <article className="book">
+    <article
+      className="book"
+      onMouseOver={() => {
+        console.log(title);
+      }}
+    >
       <Cover image={image}></Cover>
       <Title title={title} />
       <Author author={author} />
+      <button type="button" onClick={clickHandler}>
+        Click Here!
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          LogAuthor(author);
+        }}
+      >
+        Press Me !
+      </button>
     </article>
   );
 };
@@ -53,7 +79,7 @@ const Book = (props) => {
 const Cover = (props) => <img src={props.image} alt="Twilight" />;
 
 const Title = (props) => {
-  return <h3>{props.title}</h3>;
+  return <h3 onClick={() => console.log(props.title)}>{props.title}</h3>;
 };
 
 const Author = (props) => {
